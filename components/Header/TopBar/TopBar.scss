@@ -22,4 +22,41 @@
       }
     }
   }
+
+  &__right {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    .ui.icon.input > input {
+      padding-right: 5px !important;
+    }
+
+    .ui.input {
+      align-items: center;
+      margin-right: 25px;
+
+      input {
+        background-color: transparent !important;
+        border: 0;
+        border-bottom: 2px solid $primary !important;
+        color: $primary !important;
+        padding: 5px 0 !important;
+        width: 220px;
+        font-size: 20px;
+        transition: width 0.7s;
+
+        &:focus {
+          width: 350px;
+        }
+      }
+
+      i {
+        color: $primary;
+        opacity: 1 !important;
+        font-size: 25px;
+        right: -50px !important;
+      }
+    }
+  }
 }
