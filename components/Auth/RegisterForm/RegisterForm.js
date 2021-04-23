@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { registerApi } from "../../../api/user"
 
 export default function RegisterForm(props) {
   const { showLoginForm } = props;
@@ -10,7 +11,7 @@ export default function RegisterForm(props) {
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
     onSubmit: (formData) => {
-      console.log(formData);
+      registerApi(formData);
     },
   });
 
