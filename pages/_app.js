@@ -12,7 +12,7 @@ export default function MyApp({ Component, pageProps }) {
   const [auth, setAuth] = useState(undefined);
   const [reloadUser, setReloadUser] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => {// se ejectura when reload browser
     const token = getToken();
     if(token) {
       setAuth({
