@@ -9,16 +9,18 @@ import { loginApi } from "../../../api/user";
 export default function LoginForm(props) {
   const { showRegisterForm, onCloseModal } = props;
   const [loading, setLoading] = useState(false);
-  const auth = useAuth();
-  console.log(auth);
+  const { login } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
+
     onSubmit: async (formData) => {
       setLoading(true);
       const response = await loginApi(formData);
+      
       if (response?.jwt) {
+        login(response.jwt);
         onCloseModal();
       } else {
         toast.error("El email o la contraseña son incorrectos");
