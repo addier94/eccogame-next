@@ -25,18 +25,18 @@ export default function Account() {
 
   return (
     <BasicLayout className="account">
-      <Configuration user={user} />
+      <Configuration user={user} logout={logout} />
     </BasicLayout>
   );
 }
 
 function Configuration(props) {
-  const { user } = props;
+  const { user, logout } = props;
   return (
     <div className="account__configuration">
       <div className="title">Configuración</div>
       <div className="data">
-        <ChangeNameForm user={user} />
+        <ChangeNameForm user={user} logout={logout} />
       </div>
     </div>
   );
