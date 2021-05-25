@@ -7,7 +7,7 @@ import { createAddressApi } from "../../../api/address";
 import { toast } from "react-toastify";
 
 export default function AddressForm(props) {
-  const { setShowModal } = props;
+  const { setShowModal, setReloadAddresses } = props;
   const [loading, setLoading] = useState(false);
   const { auth, logout } = useAuth();
 
@@ -31,6 +31,7 @@ export default function AddressForm(props) {
       toast.warning("Error al crear la dirección");
       setLoading(false);
     } else {
+      setReloadAddresses(true);
       formik.resetForm();
       setLoading(false);
       setShowModal(false);
