@@ -5,7 +5,7 @@ import { getAddressesApi, deleteAddressApi } from "../../../api/address";
 import useAuth from "../../../hooks/useAuth";
 
 export default function ListAddress(props) {
-  const { reloadAddresses, setReloadAddresses } = props;
+  const { reloadAddresses, setReloadAddresses, openModal } = props;
   const [addresses, setAddresses] = useState(null);
   const { auth, logout } = useAuth();
 
@@ -31,6 +31,7 @@ export default function ListAddress(props) {
                 address={address}
                 logout={logout}
                 setReloadAddresses={setReloadAddresses}
+                openModal={openModal}
               />
             </Grid.Column>
           ))}
@@ -41,7 +42,7 @@ export default function ListAddress(props) {
 }
 
 function Address(props) {
-  const { address, logout, setReloadAddresses } = props;
+  const { address, logout, setReloadAddresses, openModal } = props;
   const [loadingDelete, setLoadingDelete] = useState(false);
 
   const deleteAddress = async () => {
@@ -61,7 +62,12 @@ function Address(props) {
       </p>
       <p>{address.phone}</p>
       <div className="actions">
-        <Button primary>Editar</Button>
+        <Button
+          primary
+          onClick={() => openModal(`Editar: ${address.title}`, address)}
+        >
+          Editar
+        </Button>
         <Button onClick={deleteAddress} loading={loadingDelete}>
           Eliminar
         </Button>
