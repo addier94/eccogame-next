@@ -1,5 +1,9 @@
 @import "./index.scss";
 
+body {
+  background-color: $background-grey-light !important;
+}
+
 .ui.form {
   .ui.input {
     input {
