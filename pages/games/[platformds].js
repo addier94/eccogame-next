@@ -5,6 +5,7 @@ import { size } from "lodash";
 import BasicLayout from "../../layouts/BassicLayout";
 import { getGamesPlatformApi, getTotalGamesPlatformApi } from "../../api/game";
 import ListGames from "../../components/ListGames";
+import Pagination from "../../components/Pagination";
 
 const limitPerPage = 10;
 
@@ -19,14 +20,13 @@ export default function Platform() {
     else return currentPages * limitPerPage - limitPerPage;
   };
   console.log(getStartItem());
-
   useEffect(() => {
     (async () => {
       if (query.platformds) {
         const response = await getGamesPlatformApi(
           query.platformds,
           limitPerPage,
-          0
+          getStartItem()
         );
         setGames(response);
       }
@@ -48,6 +48,13 @@ export default function Platform() {
         </div>
       )}
       {size(games) > 0 && <ListGames games={games} />}
+      {totalGames ? (
+        <Pagination
+          totalGames={totalGames}
+          page={query.page ? parseInt(query.page) : 1}
+          limitPerPage={limitPerPage}
+        />
+      ) : null}
     </BasicLayout>
   );
 }
