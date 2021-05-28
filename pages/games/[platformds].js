@@ -19,7 +19,7 @@ export default function Platform() {
     if (!query.page || currentPages === 1) return 0;
     else return currentPages * limitPerPage - limitPerPage;
   };
-  console.log(getStartItem());
+
   useEffect(() => {
     (async () => {
       if (query.platformds) {
