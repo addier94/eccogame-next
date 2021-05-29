@@ -34,3 +34,23 @@ export async function addFavoriteApi(idUser, idGame, logout) {
     return null;
   }
 }
+
+export async function deleteFavoriteApi(idUser, idGame, logout) {
+  try {
+    const dataFound = await isFavoriteApi(idUser, idGame, logout);
+    if (size(dataFound) > 0) {
+      const url = `${BASE_PATH}/favorites/${dataFound[0]?._id}`;
+      const params = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const result = authFetch(url, params, logout);
+      return result;
+    }
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
