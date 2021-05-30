@@ -3,6 +3,7 @@ import { Grid, Image, Icon, Button, GridColumn } from "semantic-ui-react";
 import { size } from "lodash";
 import classNames from "classnames";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 import {
   isFavoriteApi,
   addFavoriteApi,
@@ -27,10 +28,11 @@ export default function HeaderGame(props) {
 
 function Info(props) {
   const { game } = props;
-  const { title, summary, price, discount } = game;
+  const { title, summary, price, discount, url } = game;
   const [isFavorite, setIsFavorite] = useState(false);
   const [reloadFavorite, setReloadFavorite] = useState(false);
   const { auth, logout } = useAuth();
+  const { addProductCart } = useCart();
 
   useEffect(() => {
     (async () => {
@@ -79,7 +81,12 @@ function Info(props) {
             <p>{(price - Math.floor(price * discount) / 100).toFixed(2)}$</p>
           </div>
         </div>
-        <Button className="header-game__buy-btn">Comprar</Button>
+        <Button
+          className="header-game__buy-btn"
+          onClick={() => addProductCart(url)}
+        >
+          Comprar
+        </Button>
       </div>
     </>
   );
