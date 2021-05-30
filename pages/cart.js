@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BasicLayout from "../layouts/BassicLayout";
 import { getGameByUrlApi } from "../api/game";
 import useCart from "../hooks/useCart";
+import SummaryCart from "../components/Cart/SummaryCart";
 
 export default function Cart() {
   const { getProductsCart } = useCart();
@@ -34,8 +35,8 @@ function FullCart(props) {
   }, []);
 
   return (
-    <BasicLayout className="cart">
-      <h1>Carrito</h1>
+    <BasicLayout className="empty-cart">
+      <SummaryCart products={productsData} />
     </BasicLayout>
   );
 }
