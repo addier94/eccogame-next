@@ -30,3 +30,13 @@ export function addProductCart(product) {
     }
   }
 }
+
+export function countProductsCart() {
+  const cart = getProductsCart();
+
+  if (!cart) {
+    return 0;
+  } else {
+    return size(cart);
+  }
+}
