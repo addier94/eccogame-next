@@ -58,7 +58,8 @@ export default function MyApp({ Component, pageProps }) {
   };
 
   const addProduct = (product) => {
-    if (auth) {
+    const token = getToken();
+    if (token) {
       addProductCart(product);
       setReloadCart(true);
     } else {

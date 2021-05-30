@@ -106,9 +106,11 @@ function MenuOptions(props) {
           <Link href="/cart">
             <Menu.Item as="a" className="m-0">
               <Icon name="cart" />
-              <Label color="red" floating circular>
-                {productsCart}
-              </Label>
+              {productsCart > 0 && (
+                <Label color="red" floating circular>
+                  {productsCart}
+                </Label>
+              )}
             </Menu.Item>
           </Link>
           <Menu.Item onClick={logout} className="m-0">
