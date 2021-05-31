@@ -9,6 +9,7 @@ import {
   getProductsCart,
   addProductCart,
   countProductsCart,
+  removeProductCart,
 } from "../api/cart";
 import "../scss/global.scss";
 import "semantic-ui-css/semantic.min.css";
@@ -67,6 +68,11 @@ export default function MyApp({ Component, pageProps }) {
     }
   };
 
+  const removeProduct = (product) => {
+    removeProductCart(product);
+    setReloadCart(true);
+  };
+
   const authData = useMemo(
     () => ({
       auth,
@@ -82,7 +88,7 @@ export default function MyApp({ Component, pageProps }) {
       productsCart: totalProductsCart,
       addProductCart: (product) => addProduct(product),
       getProductsCart: getProductsCart,
-      removeProductCart: () => null,
+      removeProductCart: (product) => removeProduct(product),
       removeAllProductsCart: () => null,
     }),
     [totalProductsCart]

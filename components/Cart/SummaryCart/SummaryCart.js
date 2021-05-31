@@ -4,8 +4,9 @@ import { forEach, map, size } from "lodash";
 import useCart from "../../../hooks/useCart";
 
 export default function SummaryCart(props) {
-  const { products } = props;
+  const { products, reloadCart, setReloadCart } = props;
   const [totalPrice, setTotalPrice] = useState(0);
+  const { removeProductCart } = useCart();
 
   useEffect(() => {
     let price = 0;
@@ -13,7 +14,12 @@ export default function SummaryCart(props) {
       price += product.price;
     });
     setTotalPrice(price);
-  }, []);
+  }, [reloadCart, products]);
+
+  const removeProduct = (product) => {
+    removeProductCart(product);
+    setReloadCart(true);
+  };
 
   return (
     <div className="summary-cart">
@@ -35,7 +41,7 @@ export default function SummaryCart(props) {
                   <Icon
                     name="close"
                     link
-                    onClick={() => console.log("Borrar producto")}
+                    onClick={() => removeProduct(product.url)}
                   />
                   <Image src={product.poster.url} alt={product.title} />
                   {product.title}
