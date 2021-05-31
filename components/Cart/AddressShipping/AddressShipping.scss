@@ -37,5 +37,13 @@
         opacity: 0.6;
       }
     }
+
+    &.active {
+      border-color: $primary;
+      background-color: #ffe2d4;
+      p {
+        border-color: $primary;
+      }
+    }
   }
 }
