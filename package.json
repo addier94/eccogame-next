@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.15.0",
     "classnames": "^2.3.1",
     "formik": "^2.2.6",
     "jwt-decode": "^3.1.2",
