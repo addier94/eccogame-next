@@ -3,6 +3,7 @@ import BasicLayout from "../layouts/BassicLayout";
 import { getGameByUrlApi } from "../api/game";
 import useCart from "../hooks/useCart";
 import SummaryCart from "../components/Cart/SummaryCart";
+import AddressShipping from "../components/Cart/AddressShipping";
 
 export default function Cart() {
   const { getProductsCart } = useCart();
@@ -43,6 +44,7 @@ function FullCart(props) {
         reloadCart={reloadCart}
         setReloadCart={setReloadCart}
       />
+      <AddressShipping />
     </BasicLayout>
   );
 }
