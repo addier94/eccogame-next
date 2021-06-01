@@ -30,8 +30,8 @@ export default function ListGames(props) {
     <div className="list-games">
       <Grid>
         <Grid.Row columns={getColumnRender()}>
-          {map(games, (game) => (
-            <Game game={game} />
+          {map(games, (game, index) => (
+            <Game game={game} key={index} />
           ))}
         </Grid.Row>
       </Grid>
