@@ -21,6 +21,16 @@
         transform: translateX(-15px);
       }
     }
+    .logo{
+      color: $primary;
+      font-size: xx-large;
+      cursor: pointer;
+    }
+    @media (max-width: 560px) {
+      .logo{
+        display: none;
+      }
+    }
   }
 
   &__right {

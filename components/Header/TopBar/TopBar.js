@@ -23,9 +23,10 @@ export default function TopBar() {
 function Logo() {
   return (
     <Link href="/">
-      <a>
+      {/* <a>
         <Image src="/logo.png" alt="Gaming" />
-      </a>
+      </a> */}
+      <span className="logo">EccoG</span>
     </Link>
   );
 }
