@@ -120,7 +120,7 @@ function MenuOptions(props) {
       ) : (
         <Menu.Item onClick={onShowModal}>
           <Icon name="user outline" />
-          Mi cuenta
+          Iniciar Sesion
         </Menu.Item>
       )}
     </Menu>

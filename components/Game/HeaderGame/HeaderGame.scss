@@ -80,7 +80,11 @@
         }
       }
     }
-
+    @media(max-width: 600px){
+      &-btn.ui.button{
+        background: red!important;
+      }  
+    }
     &-btn.ui.button {
       position: relative;
       width: 200px;
